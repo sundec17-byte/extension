@@ -1,0 +1,25 @@
+{
+  "name": "steptwo",
+  "version": "1.0.0",
+  "description": "A professional-grade Chrome extension for scraping image galleries with AI-powered pattern recognition and enterprise-level reliability.",
+  "keywords": [
+    "chrome-extension",
+    "web-scraper",
+    "gallery-scraper",
+    "image-downloader"
+  ],
+  "author": "STEPTWO Team",
+  "license": "ISC",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}

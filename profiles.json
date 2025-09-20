@@ -1,0 +1,135 @@
+{
+  "example.com": {
+    "selector": "img.gallery-item",
+    "description": "Example gallery site",
+    "pagination": "a.next",
+    "waitTime": 2000
+  },
+  "pinterest.com": {
+    "selector": "[data-test-id='pin-image']",
+    "description": "Pinterest pins",
+    "pagination": "[data-test-id='load-more']",
+    "waitTime": 3000
+  },
+  "unsplash.com": {
+    "selector": "img[data-test='photo-grid-image']",
+    "description": "Unsplash photos",
+    "pagination": "[data-test='load-more-button']",
+    "waitTime": 2000
+  },
+  "gettyimages.com": {
+    "selector": "img[data-testid='gallery-asset-image'], img.gallery-mosaic-asset__image",
+    "description": "Getty Images professional stock photos",
+    "pagination": "a[data-testid='pagination-next-button'], .next-page",
+    "waitTime": 4000,
+    "scrollDelay": 1500,
+    "infiniteScroll": true,
+    "enhanced": true,
+    "lastUpdated": "2025-09-07T20:41:25.333Z"
+  },
+  "gettyimages.co.uk": {
+    "selector": "img[data-testid='gallery-asset-image'], img.gallery-mosaic-asset__image",
+    "description": "Getty Images UK",
+    "pagination": "a[data-testid='pagination-next-button'], .next-page",
+    "waitTime": 4000,
+    "scrollDelay": 1500,
+    "infiniteScroll": true,
+    "enhanced": true,
+    "lastUpdated": "2025-09-07T20:41:25.333Z"
+  },
+  "shutterstock.com": {
+    "selector": "img[data-automation='mosaic-grid-cell-image']",
+    "description": "Shutterstock stock photos and videos",
+    "pagination": "a[data-automation='pagination-next-button']",
+    "waitTime": 3000,
+    "scrollDelay": 800,
+    "infiniteScroll": true
+  },
+  "mirrorpix.com": {
+    "selector": "img.medium-thumbnail, img[id^='medium__'], img[src*='thumb.php'], .offer-image img, .gallery-item img, .image-container img, .thumbnail-container img, [class*='thumb'] img, [class*='image'] img, img[src*=\"offer\"], img[src*=\"id/\"]",
+    "description": "Mirrorpix historical newspaper archive (Enhanced: Dynamic sessions, product pages, complex pagination)",
+    "pagination": ".pagination .next, .pagination-next, [href*='page='], .nav-next, .next-page, [aria-label*='next' i], [href*=\"PAGING_SCOPE_1=\"]",
+    "waitTime": 6000,
+    "scrollDelay": 2500,
+    "requiresAuth": true,
+    "offerPages": true,
+    "dynamicSessions": true,
+    "productPages": true
+  },
+  "actionpress.de": {
+    "selector": ".search-result img, .gallery-item img",
+    "description": "ActionPress German photo agency",
+    "pagination": ".pagination-next, a[rel='next']",
+    "waitTime": 4000,
+    "scrollDelay": 1200,
+    "requiresAuth": true,
+    "enhanced": true,
+    "lastUpdated": "2025-09-07T20:41:25.333Z"
+  },
+  "news-images.smartframe.io": {
+    "selector": ".sf-grid-item img, .image-container img",
+    "description": "SmartFrame news images",
+    "pagination": ".load-more, .pagination-next",
+    "waitTime": 6000,
+    "scrollDelay": 1500,
+    "specialHandling": "smartframe"
+  },
+  "archive.newsimages.co.uk": {
+    "selector": ".sf-grid-item img, .archive-image img",
+    "description": "News Images Archive",
+    "pagination": ".load-more, .pagination-next",
+    "waitTime": 6000,
+    "scrollDelay": 1500,
+    "specialHandling": "smartframe"
+  },
+  "imago-images.com": {
+    "selector": ".search-result img, .media-item img",
+    "description": "Imago Images international photo agency",
+    "pagination": ".pagination-next, [data-page-next]",
+    "waitTime": 4000,
+    "scrollDelay": 1000,
+    "requiresAuth": true,
+    "enhanced": true,
+    "lastUpdated": "2025-09-07T20:41:25.333Z"
+  },
+  "adobe.com": {
+    "selector": "[data-testid='asset-image'], .search-result-card img",
+    "description": "Adobe Stock images and assets",
+    "pagination": "[data-testid='next-page'], .search-pagination-next",
+    "waitTime": 3000,
+    "scrollDelay": 1000,
+    "infiniteScroll": true
+  },
+  "flickr.com": {
+    "selector": ".photo-list-photo-view img, .search-photos-results img",
+    "description": "Flickr photo sharing platform",
+    "pagination": ".pagination-next, .infinite-scroll-trigger",
+    "waitTime": 2500,
+    "scrollDelay": 800,
+    "infiniteScroll": true
+  },
+  "500px.com": {
+    "selector": ".photo img, .gallery-item img",
+    "description": "500px photography community",
+    "pagination": ".load-more, .pagination-next",
+    "waitTime": 3000,
+    "scrollDelay": 1000,
+    "infiniteScroll": true
+  },
+  "pexels.com": {
+    "selector": ".photo-item img, [data-testid='photo']",
+    "description": "Pexels free stock photos",
+    "pagination": ".load-more-button, [data-testid='load-more']",
+    "waitTime": 2000,
+    "scrollDelay": 800,
+    "infiniteScroll": true
+  },
+  "pixabay.com": {
+    "selector": ".item img, .image--overlay img",
+    "description": "Pixabay free images and videos",
+    "pagination": ".load-more, .pagination-next",
+    "waitTime": 2500,
+    "scrollDelay": 1000,
+    "infiniteScroll": true
+  }
+}

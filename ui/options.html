@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StepTwo Gallery Scraper - Settings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 8px;
+        }
+
+        .setting-group {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .setting-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .setting-label {
+            flex: 1;
+            margin-right: 16px;
+        }
+
+        .setting-label h3 {
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: #333;
+        }
+
+        .setting-label p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .setting-control {
+            flex-shrink: 0;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 26px;
+            background: #ccc;
+            border-radius: 13px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle-switch.active {
+            background: #667eea;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(24px);
+        }
+
+        .input-field {
+            padding: 8px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            width: 120px;
+            transition: border-color 0.3s;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .select-field {
+            padding: 8px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            width: 140px;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .select-field:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .button.primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .button.primary:hover {
+            background: #5a6fd8;
+            transform: translateY(-1px);
+        }
+
+        .button.secondary {
+            background: #f1f3f4;
+            color: #333;
+        }
+
+        .button.secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .status-message {
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .status-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .preset-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .preset-button {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .preset-button.active,
+        .preset-button:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .advanced-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .advanced-toggle {
+            cursor: pointer;
+            font-weight: 500;
+            color: #667eea;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .advanced-toggle::before {
+            content: '▶';
+            margin-right: 8px;
+            transition: transform 0.3s;
+        }
+
+        .advanced-toggle.expanded::before {
+            transform: rotate(90deg);
+        }
+
+        .advanced-content {
+            display: none;
+        }
+
+        .advanced-content.expanded {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔥 StepTwo Gallery Scraper</h1>
+            <p>Professional settings and configuration</p>
+        </div>
+
+        <div class="content">
+            <div id="statusMessage" class="status-message"></div>
+
+            <!-- Presets Section -->
+            <div class="section">
+                <h2>Quick Presets</h2>
+                <div class="preset-buttons">
+                    <button class="preset-button" data-preset="balanced">Balanced</button>
+                    <button class="preset-button" data-preset="fast">Fast</button>
+                    <button class="preset-button" data-preset="thorough">Thorough</button>
+                    <button class="preset-button" data-preset="compatible">Max Compatible</button>
+                </div>
+            </div>
+
+            <!-- General Settings -->
+            <div class="section">
+                <h2>General Settings</h2>
+                <div class="setting-group">
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Auto-detect galleries</h3>
+                            <p>Automatically detect gallery pages and show indicators</p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="toggle-switch active" id="autoDetectToggle">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Download images</h3>
+                            <p>Automatically download found images</p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="toggle-switch active" id="downloadImagesToggle">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Smart filtering</h3>
+                            <p>Use AI-powered filtering to improve results</p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="toggle-switch active" id="smartFilterToggle">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Settings -->
+            <div class="section">
+                <h2>Performance Settings</h2>
+                <div class="setting-group">
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Page wait time</h3>
+                            <p>Time to wait after page loads (milliseconds)</p>
+                        </div>
+                        <div class="setting-control">
+                            <input type="number" class="input-field" id="pageWaitInput" value="2000" min="500" max="30000">
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Scroll delay</h3>
+                            <p>Delay between scroll attempts (milliseconds)</p>
+                        </div>
+                        <div class="setting-control">
+                            <input type="number" class="input-field" id="scrollDelayInput" value="1000" min="100" max="10000">
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Max downloads</h3>
+                            <p>Maximum concurrent downloads</p>
+                        </div>
+                        <div class="setting-control">
+                            <select class="select-field" id="maxDownloadsSelect">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="5" selected>5</option>
+                                <option value="8">8</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Settings -->
+            <div class="section">
+                <h2>Download Settings</h2>
+                <div class="setting-group">
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Download folder</h3>
+                            <p>Custom folder name for downloads</p>
+                        </div>
+                        <div class="setting-control">
+                            <input type="text" class="input-field" id="downloadFolderInput" value="StepTwo" placeholder="Folder name">
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Filename mask</h3>
+                            <p>Pattern for naming downloaded files</p>
+                        </div>
+                        <div class="setting-control">
+                            <input type="text" class="input-field" id="filenameMaskInput" value="*name*.*ext*" placeholder="*name*.*ext*">
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Retry attempts</h3>
+                            <p>Number of times to retry failed downloads</p>
+                        </div>
+                        <div class="setting-control">
+                            <select class="select-field" id="retryAttemptsSelect">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3" selected>3</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Settings -->
+            <div class="advanced-section">
+                <div class="advanced-toggle" id="advancedToggle">
+                    Advanced Settings
+                </div>
+                <div class="advanced-content" id="advancedContent">
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Memory optimization</h3>
+                            <p>Enable memory optimization for large galleries</p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="toggle-switch active" id="memoryOptToggle">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Performance monitoring</h3>
+                            <p>Track performance metrics and show warnings</p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="toggle-switch active" id="perfMonToggle">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Debug logging</h3>
+                            <p>Enable detailed debug logs in console</p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="toggle-switch" id="debugToggle">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Features Section -->
+            <div class="section">
+                <h2>🚀 New Features</h2>
+                
+                <div class="setting-group">
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Batch Operations</h3>
+                            <p>Process multiple galleries simultaneously with advanced queuing</p>
+                        </div>
+                        <div class="setting-control">
+                            <button class="button secondary" id="manageBatchButton">Manage Batches</button>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Site Profiles</h3>
+                            <p>Built-in profiles for Getty, Shutterstock, Adobe Stock and custom profiles</p>
+                        </div>
+                        <div class="setting-control">
+                            <button class="button secondary" id="manageProfilesButton">Manage Profiles</button>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Advanced Filtering</h3>
+                            <p>Enhanced content filtering with regex, MIME types, and dimensions</p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="toggle-switch active" id="advancedFilteringToggle">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Keyboard Shortcuts</h3>
+                            <p>Quick access keys: Ctrl+Shift+S (scraper), P (picker), D (dashboard)</p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="toggle-switch active" id="keyboardShortcutsToggle">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-label">
+                            <h3>Context Menu Integration</h3>
+                            <p>Right-click actions for quick scraping and image downloading</p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="toggle-switch active" id="contextMenuToggle">
+                                <div class="toggle-slider"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="button secondary" id="resetButton">Reset to Defaults</button>
+                <button class="button secondary" id="exportButton">Export Settings</button>
+                <button class="button secondary" id="importButton">Import Settings</button>
+                <button class="button primary" id="saveButton">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "changes": [
+    {
+      "version": "0.2.0",
+      "date": "2024-01-15",
+      "type": "release",
+      "description": "Professional Web Scraper with bulk download capabilities",
+      "features": [
+        "Enhanced service worker architecture",
+        "Improved site profile management", 
+        "Advanced gallery detection",
+        "Memory-optimized processing",
+        "Batch operations support"
+      ]
+    },
+    {
+      "version": "0.1.0",
+      "date": "2024-01-01", 
+      "type": "initial",
+      "description": "Initial release of StepTwo Gallery Scraper",
+      "features": [
+        "Basic gallery scraping functionality",
+        "Chrome extension manifest v3 support",
+        "Site profile system"
+      ]
+    }
+  ]
+}
